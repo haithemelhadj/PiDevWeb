@@ -15,6 +15,14 @@ final class FirstPageController extends AbstractController
             'controller_name' => 'FirstPageController',
         ]);
     }
+
+    #[Route('/home', name: 'home')]
+    public function home(): Response
+    {
+        return $this->render('base.html.twig', [
+
+        ]);
+    }
 /*
 class PageController extends AbstractController
 {
