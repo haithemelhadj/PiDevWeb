@@ -42,6 +42,10 @@ class Evenement
     #[ORM\Column(name: "is_added", type: "boolean", nullable: true)]
     private ?bool $isAdded = false;
 
+    #[ORM\ManyToOne]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Lieu $lieu_id = null;
+
     public function getEvenementId(): ?int
     {
         return $this->evenementId;
