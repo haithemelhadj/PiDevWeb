@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Yass index{% endblock %}
+
+{% block body %}
+    <h1>Yass index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Ya</th>
+                <th>No</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for yass in yasses %}
+            <tr>
+                <td>{{ yass.id }}</td>
+                <td>{{ yass.ya }}</td>
+                <td>{{ yass.no }}</td>
+                <td>
+                    <a href="{{ path('app_yass_show', {'id': yass.id}) }}">show</a>
+                    <a href="{{ path('app_yass_edit', {'id': yass.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_yass_new') }}">Create new</a>
+{% endblock %}

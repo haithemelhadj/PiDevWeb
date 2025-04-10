@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Offre index{% endblock %}
+
+{% block body %}
+    <h1>Offre index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>OffreId</th>
+                <th>Titre</th>
+                <th>Description</th>
+                <th>Budget</th>
+                <th>TypeContrat</th>
+                <th>Statut</th>
+                <th>CreeLe</th>
+                <th>ExpireLe</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for offre in offres %}
+            <tr>
+                <td>{{ offre.offreId }}</td>
+                <td>{{ offre.titre }}</td>
+                <td>{{ offre.description }}</td>
+                <td>{{ offre.budget }}</td>
+                <td>{{ offre.typeContrat }}</td>
+                <td>{{ offre.statut }}</td>
+                <td>{{ offre.creeLe ? offre.creeLe|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ offre.expireLe ? offre.expireLe|date('Y-m-d') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_offre_show', {'offreId': offre.offreId}) }}">show</a>
+                    <a href="{{ path('app_offre_edit', {'offreId': offre.offreId}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="9">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_offre_new') }}">Create new</a>
+{% endblock %}

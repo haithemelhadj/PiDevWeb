@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}MembreEquipe index{% endblock %}
+
+{% block body %}
+    <h1>MembreEquipe index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Role</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for membre_equipe in membre_equipes %}
+            <tr>
+                <td>{{ membre_equipe.id }}</td>
+                <td>{{ membre_equipe.role }}</td>
+                <td>
+                    <a href="{{ path('app_membre_equipe_show', {'id': membre_equipe.id}) }}">show</a>
+                    <a href="{{ path('app_membre_equipe_edit', {'id': membre_equipe.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_membre_equipe_new') }}">Create new</a>
+{% endblock %}

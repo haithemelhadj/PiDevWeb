@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Yass{% endblock %}
+
+{% block body %}
+    <h1>Yass</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ yass.id }}</td>
+            </tr>
+            <tr>
+                <th>Ya</th>
+                <td>{{ yass.ya }}</td>
+            </tr>
+            <tr>
+                <th>No</th>
+                <td>{{ yass.no }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_yass_index') }}">back to list</a>
+
+    <a href="{{ path('app_yass_edit', {'id': yass.id}) }}">edit</a>
+
+    {{ include('yass/_delete_form.html.twig') }}
+{% endblock %}

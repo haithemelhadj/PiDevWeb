@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New ArticleBoutique{% endblock %}
+
+{% block body %}
+    <h1>Create new ArticleBoutique</h1>
+
+    {{ include('article_boutique/_form.html.twig') }}
+
+    <a href="{{ path('app_article_boutique_index') }}">back to list</a>
+{% endblock %}

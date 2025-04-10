@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Service index{% endblock %}
+
+{% block body %}
+    <h1>Service index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ServiceId</th>
+                <th>Titre</th>
+                <th>Description</th>
+                <th>Expertise</th>
+                <th>DureeJours</th>
+                <th>Prix</th>
+                <th>ModePaiement</th>
+                <th>CreeLe</th>
+                <th>MisAJourLe</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for service in services %}
+            <tr>
+                <td>{{ service.serviceId }}</td>
+                <td>{{ service.titre }}</td>
+                <td>{{ service.description }}</td>
+                <td>{{ service.expertise }}</td>
+                <td>{{ service.dureeJours }}</td>
+                <td>{{ service.prix }}</td>
+                <td>{{ service.modePaiement }}</td>
+                <td>{{ service.creeLe ? service.creeLe|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ service.misAJourLe ? service.misAJourLe|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_service_show', {'serviceId': service.serviceId}) }}">show</a>
+                    <a href="{{ path('app_service_edit', {'serviceId': service.serviceId}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="10">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_service_new') }}">Create new</a>
+{% endblock %}
